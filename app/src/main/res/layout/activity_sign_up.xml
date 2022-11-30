@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity"
+    android:background="@drawable/background_finale">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+
+        <TextView
+            android:id="@+id/TextViewCreateAcc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:fontFamily="@font/signika_bold"
+
+            android:gravity="center"
+
+            android:text="creer un nouveau compte"
+            android:textColor="@color/black"
+            android:textSize="50dp" />
+    <TextView
+        android:id="@+id/TextViewName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewCreateAcc"
+        android:layout_marginTop="20dp"
+        android:text="Name"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:padding="10dp"
+
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        />
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewName"
+        android:background="@drawable/edit_text_style"
+
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/white"
+        android:inputType="textPersonName"
+        android:padding="20dp" />
+
+    <TextView
+        android:id="@+id/TextViewEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextName"
+        android:layout_marginTop="20dp"
+        android:text="Email"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:padding="10dp"
+
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        />
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewEmail"
+        android:background="@drawable/edit_text_style"
+
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+
+
+        android:inputType="textEmailAddress"
+        android:padding="20dp" />
+
+
+    <TextView
+        android:id="@+id/TextViewPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextEmail"
+        android:layout_marginTop="20dp"
+        android:text="Password"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:padding="10dp"
+
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        />
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewPassword"
+        android:background="@drawable/edit_text_style"
+
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+
+        android:inputType="textPassword"
+        android:padding="20dp" />
+
+    <TextView
+        android:id="@+id/TextViewPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPassword"
+        android:layout_marginTop="20dp"
+        android:text="Phone"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:padding="10dp"
+
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        />
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewPhone"
+        android:background="@drawable/edit_text_style"
+
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+
+
+        android:inputType="phone"
+        android:padding="20dp" />
+
+
+        <TextView
+            android:id="@+id/TextViewChoices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextPhone"
+            android:layout_marginTop="20dp"
+            android:text="choisir les sports"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:padding="10dp"
+
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            />
+        <LinearLayout
+            android:id="@+id/sportChoices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/TextViewChoices"
+            android:padding="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            >
+
+            <CheckBox
+                android:id="@+id/NatationCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Natation"
+                android:layout_below="@id/editTextPhone"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+
+            />
+            <CheckBox
+                android:id="@+id/TennisCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tennis"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                />
+            <CheckBox
+                android:id="@+id/FootCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="foot-ball"
+                android:layout_marginLeft="10dp"
+                />
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/BtnSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sportChoices"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Sign up"
+            android:textColor="@color/white"
+            />
+
+        <LinearLayout
+            android:id="@+id/askLoginLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/BtnSignup"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+
+            >
+            <TextView
+                android:id="@+id/TextViewRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already Registred?"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Log in here."
+                android:layout_marginRight="10dp"
+                android:textColor="@color/blue"
+                android:textSize="20dp"
+                android:fontFamily="@font/signika_bold"
+                />
+        </LinearLayout>
+
+
+</RelativeLayout>
+</ScrollView>
