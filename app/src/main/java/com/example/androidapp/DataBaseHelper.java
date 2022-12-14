@@ -9,13 +9,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "registerUser.db";
+    public static final String DATABASE_NAME = "Club.db";
     public static final String TABLE_NAME = "user";
-    public static final String COL_1 = "ID";
-    public static final String COL_2 = "username";
-    public static final String COL_3 = "email";
-    public static final String COL_4 = "password";
-    public static final String COL_5 = "phone";
+    public static final String COL_ID = "_id";
+    public static final String COL_USERNAME = "username";
+    public static final String COL_EMAIL = "email";
+    public static final String COL_PASSWORD = "password";
+    public static final String COL_PHONE = "phone";
 
     // TODO: verify the DB table
 
@@ -26,7 +26,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_NAME+"( ID INTEGER PRIMARY KEY AUTOINCREMENT,username TEXT,password TEXT)");
+        sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_NAME+"(_id INTEGER PRIMARY KEY AUTOINCREMENT,username TEXT,email TEXT,password TEXT,phone TEXT)");
     }
 
     @Override
@@ -34,43 +34,56 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS "+TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
-    // function to add a new user --> register
-    public void addUser(String username,String email, String password,String phone){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues() ;
-        contentValues.put("username",username);
-        contentValues.put("email",email);
-        contentValues.put("password",password);
-        contentValues.put("phone",phone);
-
-
-        db.insert(TABLE_NAME,null,contentValues);
-        db.close();
-    }
 
     //function to check if the user already exists or not --> register
-
-    public boolean checkUser(String username, String password){
+    public boolean checkUser(String email, String password){
         try{
-            String[] columns = {COL_1};
-            SQLiteDatabase db = this.getReadableDatabase();
-            String selection = COL_3+ "=? and " +COL_4 + " =?";
-            String[] selectionArgs = {username, password} ;
 
-            Cursor cursor = db.query(TABLE_NAME,columns,selection,selectionArgs,null,null,null);
+            SQLiteDatabase db = this.getReadableDatabase();
+            String query = "SELECT * FROM "+TABLE_NAME+ " WHERE "
+                    +COL_EMAIL +"=?  AND "+COL_PASSWORD+"= ?" ;
+            String[] selectionArgs = {email,password};
+            System.out.println(email);
+            System.out.println(password);
+
+            Cursor cursor = db.rawQuery(query,selectionArgs);
             int count = cursor.getCount();
 
             // closing cursor & db connection before returning
             cursor.close();
             db.close();
 
-            if(count>0) return true ;
+            if(count> 0) return true ;
         }catch(SQLiteException e ){
+            System.out.println("[ERROR]: "+e.getMessage());
             return false ;
         }
         return false ;
     }
+
+    // function to add a new user --> register
+    public void addUser(String username,String email, String password,String phone){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues() ;
+        contentValues.put(COL_USERNAME,username);
+        contentValues.put(COL_EMAIL,email);
+        contentValues.put(COL_PASSWORD,password);
+        contentValues.put(COL_PHONE,phone);
+
+
+        long result = db.insert(TABLE_NAME,null,contentValues);
+        if(result == -1) System.out.println("does not inserted ");
+        db.close();
+    }
+
+    // TODO: get the user account information
+    public void getUser(int _id){
+        String query = "SELECT "+COL_USERNAME +","+COL_PASSWORD +" FROM " ;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null ;
+    }
+
 
 
 }

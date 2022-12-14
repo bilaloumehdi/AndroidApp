@@ -1,7 +1,9 @@
 package com.example.androidapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -51,13 +53,27 @@ public class LoginActivity extends AppCompatActivity {
                     String passwd = password.getEditText().getText().toString();
                     Boolean isExists = db.checkUser(user,passwd);
 
-
+                    System.out.println("exists : "+ isExists);
                     if(isExists){
-                        Toast.makeText(LoginActivity.this,"you r logged in "+email,Toast.LENGTH_LONG).show();
-                    }else {
-                        Toast.makeText(LoginActivity.this,"the account does not exists",Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this," connection établie ",Toast.LENGTH_LONG).show();
 
+                        // back to the home page
+                        Intent homepage = new Intent(LoginActivity.this,MainActivity.class);
+                        startActivity(homepage);
+
+                    }else {
+                        // show an pop up --> authentication failed ;
+                        AlertDialog alertDialog= new AlertDialog.Builder(LoginActivity.this).create();
+                        alertDialog.setTitle("email et/ou mot de passe est incorrect ");
+                        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                alertDialog.hide();
+                            }
+                        });
+                        alertDialog.show();
                     }
+
                 }catch(SQLiteException e){
                     System.out.println(e.getMessage());
                 }
