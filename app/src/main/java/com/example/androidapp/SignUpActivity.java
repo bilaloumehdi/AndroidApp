@@ -1,7 +1,9 @@
 package com.example.androidapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -52,17 +54,39 @@ public class SignUpActivity extends AppCompatActivity {
                     String mail =  email.getEditText().getText().toString().trim();
                     String psswd =  password.getEditText().getText().toString().trim();
                     String mobile =  phone.getEditText().getText().toString().trim();
-
+                    System.out.println(user + " " + mail );
                     //check if the user exists already or not
-                    if(!db.checkUser(user,psswd)){
+                    if(db.checkUser(user,psswd) == false){
                         db.addUser(user,mail,psswd,mobile);
-                        Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_LONG);
+                        Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
+
+                        // back to Home page
+                        Intent homepage = new Intent(SignUpActivity.this,MainActivity.class);
+                        startActivity(homepage);
                     }else{
-                        Toast.makeText(SignUpActivity.this,"le compte s'existe déja  ",Toast.LENGTH_LONG);
+                        // show an pop up --> account already exists ;
+                        AlertDialog alertDialog= new AlertDialog.Builder(SignUpActivity.this).create();
+                        alertDialog.setTitle("le compte existe déja ! ");
+                        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                alertDialog.hide();
+                            }
+                        });
+                        alertDialog.show();
                     }
 
                 }catch(SQLiteException e){
-                    Toast.makeText(SignUpActivity.this,"une erreur si produit , merci de ressayer plus tard",Toast.LENGTH_LONG);
+                    // show an pop up --> there is an exception  ;
+                    AlertDialog alertDialog= new AlertDialog.Builder(SignUpActivity.this).create();
+                    alertDialog.setTitle("une erreur si produit , merci de ressayer plus tard ");
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            alertDialog.hide();
+                        }
+                    });
+                    alertDialog.show();
                 }
 
             }
