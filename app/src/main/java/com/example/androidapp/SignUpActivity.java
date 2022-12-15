@@ -61,7 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
 
                         // back to Home page
-                        Intent homepage = new Intent(SignUpActivity.this,MainActivity.class);
+                        Intent homepage = new Intent(SignUpActivity.this, MainActivity0.class);
                         startActivity(homepage);
                     }else{
                         // show an pop up --> account already exists ;
