@@ -2,19 +2,16 @@ package com.example.androidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity0 extends AppCompatActivity {
     Button btnLogin ;
 
-
-
-
+    // the Mainactivity name has been changed
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(MainActivity.this,LoginActivity.class);
+                Intent in = new Intent(MainActivity0.this,LoginActivity.class);
                 startActivity(in);
             }
         });

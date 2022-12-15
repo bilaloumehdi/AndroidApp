@@ -32,7 +32,7 @@ public class Account extends AppCompatActivity {
             public void onClick(View view) {
                 // remove the session and open the main activity
                  sessionManagement.removeSession();
-                Intent it = new Intent(Account.this,MainActivity.class);
+                Intent it = new Intent(Account.this, MainActivity0.class);
                 startActivity(it);
             }
         });
