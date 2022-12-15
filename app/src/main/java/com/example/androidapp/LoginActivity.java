@@ -23,6 +23,25 @@ public class LoginActivity extends AppCompatActivity {
     DataBaseHelper db ;
 
     @Override
+    protected void onStart(){
+        super.onStart();
+        // check if the user is logged in
+        // if the user is logged in move to Account_Activity
+        //
+        // TODO : uncomment this bloc
+
+        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
+
+
+         int userID = sessionManagement.getSession();
+
+        if(userID != -1){
+            Intent it = new Intent(LoginActivity.this,Account.class);
+            startActivity(it);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -51,14 +70,23 @@ public class LoginActivity extends AppCompatActivity {
                 try{
                     String user = email.getEditText().getText().toString().trim();
                     String passwd = password.getEditText().getText().toString();
-                    Boolean isExists = db.checkUser(user,passwd);
+                    boolean isExists = db.checkUser(user,passwd);
+
+                    // session Management
+                    SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
 
                     System.out.println("exists : "+ isExists);
                     if(isExists){
+
+                        // create the user object & Save The session
+                        //TODO: get id from the db
+                        User userObj = new User(db.getUserId(),user);
+                        sessionManagement.saveSession(userObj);
+
                         Toast.makeText(LoginActivity.this," connection établie ",Toast.LENGTH_LONG).show();
 
                         // back to the home page
-                        Intent homepage = new Intent(LoginActivity.this,MainActivity.class);
+                        Intent homepage = new Intent(LoginActivity.this,Account.class);
                         startActivity(homepage);
 
                     }else {
@@ -75,10 +103,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                 }catch(SQLiteException e){
-                    System.out.println(e.getMessage());
+                    System.out.println("[ERROR]: " +e.getMessage());
                 }
-
-
             }
         });
     }

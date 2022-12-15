@@ -1,5 +1,6 @@
 package com.example.androidapp;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -16,8 +17,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COL_EMAIL = "email";
     public static final String COL_PASSWORD = "password";
     public static final String COL_PHONE = "phone";
+    private int _id ;
+    private String username ;
 
-    // TODO: verify the DB table
+    // get the user id to use it in sessions
+    public int getUserId(){
+        return _id ;
+    }
+
+    // to get the username & use it in the User Object creation ;
+    public String getUsername() {
+        return username;
+    }
+
+// TODO: verify the DB table
 
 
 
@@ -36,6 +49,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     //function to check if the user already exists or not --> register
+    @SuppressLint("Range")
     public boolean checkUser(String email, String password){
         try{
 
@@ -43,17 +57,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String query = "SELECT * FROM "+TABLE_NAME+ " WHERE "
                     +COL_EMAIL +"=?  AND "+COL_PASSWORD+"= ?" ;
             String[] selectionArgs = {email,password};
-            System.out.println(email);
-            System.out.println(password);
 
             Cursor cursor = db.rawQuery(query,selectionArgs);
-            int count = cursor.getCount();
+            if(cursor.getCount() > 0){
+                if(cursor.moveToFirst()){
 
-            // closing cursor & db connection before returning
-            cursor.close();
-            db.close();
+                    _id = cursor.getInt(cursor.getColumnIndex(COL_ID));
+                    username = cursor.getString(cursor.getColumnIndex(COL_USERNAME));
 
-            if(count> 0) return true ;
+                    // closing cursor & db connection before returning
+                    cursor.close();
+                    db.close();
+
+                    return true ;
+                }
+            }
+
+
+
         }catch(SQLiteException e ){
             System.out.println("[ERROR]: "+e.getMessage());
             return false ;
@@ -78,12 +99,27 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // TODO: get the user account information
-    public void getUser(int _id){
-        String query = "SELECT "+COL_USERNAME +","+COL_PASSWORD +" FROM " ;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = null ;
-    }
 
+    @SuppressLint("Range")
+    public  User getUserDetails(int _id){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query ="SELECT * FROM "+TABLE_NAME +
+                " WHERE "+COL_ID +" = ?";
+
+        String[] selectionArgs = {String.valueOf(_id)};
+        Cursor cursor = db.rawQuery(query,selectionArgs) ;
+
+        if(cursor.getCount() >0){
+            if(cursor.moveToFirst()){
+             String username= cursor.getString(cursor.getColumnIndex(COL_USERNAME));
+             String email = cursor.getString(cursor.getColumnIndex(COL_EMAIL));
+             User user = new User(_id,username);
+             return user ;
+            }
+        }
+        return null ;
+    }
 
 
 }
