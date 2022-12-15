@@ -10,8 +10,7 @@ import android.widget.Button;
 public class MainActivity0 extends AppCompatActivity {
     Button btnLogin ;
 
-
-
+    // the Mainactivity name has been changed
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
