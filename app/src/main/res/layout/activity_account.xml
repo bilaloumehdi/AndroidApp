@@ -16,22 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/navbar">
-            <Button
-                android:id="@+id/logout_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="se deconnecter "
-                android:layout_marginLeft="200dp" />
-
-            <TextView
-                android:id="@+id/welcomeText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Welcome "
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                />
-
         </RelativeLayout>
 
        <androidx.cardview.widget.CardView
