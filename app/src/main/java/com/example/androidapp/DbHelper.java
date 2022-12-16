@@ -18,9 +18,6 @@ public class DbHelper  extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(" CREATE TABLE sport (sid text,name text,imageId int,prix text,empoloi int )");
     }
 
-
-
-
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("drop table if exists sport");

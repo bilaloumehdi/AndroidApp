@@ -23,13 +23,10 @@ public class LoginActivity extends AppCompatActivity {
     DataBaseHelper db ;
     String nameOfSport;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         //geting data form listview
         Intent intent = this.getIntent();
@@ -37,12 +34,6 @@ public class LoginActivity extends AppCompatActivity {
             nameOfSport = intent.getStringExtra("name");
             Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
         }
-
-
-
-
-
-
 
         // getting the View elements
         email = (TextInputLayout) findViewById(R.id.TextViewLayoutEmail);
