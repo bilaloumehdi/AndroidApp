@@ -75,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                     // session Management
                     SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
 
-                    System.out.println("exists : "+ isExists);
                     if(isExists){
 
                         // create the user object & Save The session

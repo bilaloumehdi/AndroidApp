@@ -25,9 +25,10 @@ public class SettingsActivity extends AppCompatActivity {
     CheckBox footballChbx;
     Button saveBtn ;
     Button cancelBtn ;
+    String sports ;
     // DB
     DataBaseHelper db ;
-    User user ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,15 +39,24 @@ public class SettingsActivity extends AppCompatActivity {
         confirmPassword = (TextInputEditText) findViewById(R.id.textInputConfirmPsswd);
         saveBtn = (Button)findViewById(R.id.Btn_save);
         cancelBtn =(Button)findViewById(R.id.Btn_cancel);
+        natationChbx = (CheckBox) findViewById(R.id.NatationCheckbox);
+        tennisChbx = (CheckBox) findViewById(R.id.TennisCheckbox);
+        footballChbx = (CheckBox) findViewById(R.id.FootCheckbox);
+
         db = new DataBaseHelper(SettingsActivity.this);
         SessionManagement sessionManagement = new SessionManagement(SettingsActivity.this) ;
         int id = sessionManagement.getSession();
 
-        user = db.getUserDetails(id);
-
+        User user = db.getUserDetails(id);
 
         username.setText(user.getUsername());
-
+        sports = user.getSports();
+        String[] sportsArray = sports.split("/");
+        for(String sport : sportsArray){
+            if(sport.equals("Tennis")) tennisChbx.setChecked(true);
+            if(sport.equals("Foot-ball")) footballChbx.setChecked(true);
+            if(sport.equals("Natation")) natationChbx.setChecked(true);
+        }
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,16 +65,26 @@ public class SettingsActivity extends AppCompatActivity {
                 String oldPasswordStr = oldPassword.getText().toString();
                 String newPasswordStr = newPassword.getText().toString();
                 String confirmPasswordStr = confirmPassword.getText().toString();
+                // getting the sports used
+                String sports= "";
+                if(tennisChbx.isChecked()){
+                    sports = sports + "Tennis/";
+                }
+                if(footballChbx.isChecked()){
+                    sports = sports + "Foot-ball/";
+                }
+                if(natationChbx.isChecked()){
+                    sports = sports + "Natation/";
+                }
 
-                System.out.println("confirm pass "+confirmPasswordStr);
-                if(!newPasswordStr.equals(confirmPasswordStr)){
-                    createPopup("le nouveau mot de passe et le confirmé sont differents ");
-                }else if(usernameStr.equals("") || (newPasswordStr.equals("")&& oldPasswordStr.equals(user.getPassword()))){
+                if(usernameStr.equals("") || (newPasswordStr.equals("") && oldPasswordStr.equals(user.getPassword()))){
                     createPopup("il faut remplir les champs ");
-                } else if(!oldPasswordStr.equals(user.getPassword())){
+                } else if(!oldPasswordStr.equals(user.getPassword()) && !oldPasswordStr.equals("") ){
                     createPopup("l'ancien mot de passe est incorrect");
+                }else if(!newPasswordStr.equals(confirmPasswordStr)){
+                    createPopup("le nouveau mot de passe et le confirmé sont differents ");
                 }else{
-                    if(db.UpdateUser(usernameStr,confirmPasswordStr)){
+                    if(db.UpdateUser(usernameStr,confirmPasswordStr,sports)){
                         Toast.makeText(SettingsActivity.this,"vos donnez sont modifiés",Toast.LENGTH_SHORT);
                         Intent intent = new Intent(SettingsActivity.this,Account.class);
                         startActivity(intent);

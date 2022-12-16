@@ -17,6 +17,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COL_EMAIL = "email";
     public static final String COL_PASSWORD = "password";
     public static final String COL_PHONE = "phone";
+    public static final String COL_SPORTS= "sports";
     private int _id ;
     private String username ;
 
@@ -39,7 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_NAME+"(_id INTEGER PRIMARY KEY AUTOINCREMENT,username TEXT,email TEXT,password TEXT,phone TEXT)");
+        sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_NAME+"(_id INTEGER PRIMARY KEY AUTOINCREMENT,username TEXT,email TEXT,password TEXT,phone TEXT ,sports TEXT)");
     }
 
     @Override
@@ -73,8 +74,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 }
             }
 
-
-
         }catch(SQLiteException e ){
             System.out.println("[ERROR]: "+e.getMessage());
             return false ;
@@ -83,7 +82,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // function to add a new user --> register
-    public void addUser(String username,String email, String password,String phone){
+    public void addUser(String username,String email, String password,String phone,String sports){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues() ;
@@ -91,7 +90,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_EMAIL,email);
         contentValues.put(COL_PASSWORD,password);
         contentValues.put(COL_PHONE,phone);
-
+        contentValues.put(COL_SPORTS,sports);
 
         long result = db.insert(TABLE_NAME,null,contentValues);
         if(result == -1) System.out.println("does not inserted ");
@@ -100,11 +99,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // Update the user information
     // could modify username,password,and sport choices
     // TODO: adding the sports to the function (later)
-    public boolean UpdateUser(String username,String password){
+    public boolean UpdateUser(String username,String password,String sports){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues() ;
         contentValues.put(COL_USERNAME,username);
         contentValues.put(COL_PASSWORD,password);
+        contentValues.put(COL_SPORTS,sports);
         int result= db.update(TABLE_NAME,contentValues,"",null);
 
         if(result == -1) return false ;
@@ -129,8 +129,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
              String email = cursor.getString(cursor.getColumnIndex(COL_EMAIL));
              String password = cursor.getString(cursor.getColumnIndex(COL_PASSWORD));
              String phone = cursor.getString(cursor.getColumnIndex(COL_PHONE));
-
-             return new User(_id,username,email,password,phone);
+             String sports = cursor.getString(cursor.getColumnIndex(COL_SPORTS));
+             return new User(_id,username,email,password,phone,sports);
             }
         }
         return null ;
