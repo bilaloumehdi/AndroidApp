@@ -21,30 +21,28 @@ public class LoginActivity extends AppCompatActivity {
     Button loginBtn ;
     //DB
     DataBaseHelper db ;
-
-    @Override
-    protected void onStart(){
-        super.onStart();
-        // check if the user is logged in
-        // if the user is logged in move to Account_Activity
-        //
-        // TODO : uncomment this bloc
-
-        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
+    String nameOfSport;
 
 
-         int userID = sessionManagement.getSession();
-
-        if(userID != -1){
-            Intent it = new Intent(LoginActivity.this,Account.class);
-            startActivity(it);
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        //geting data form listview
+        Intent intent = this.getIntent();
+        if(intent != null){
+            nameOfSport = intent.getStringExtra("name");
+            Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+
+
 
         // getting the View elements
         email = (TextInputLayout) findViewById(R.id.TextViewLayoutEmail);
@@ -58,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent signupActivity = new Intent(LoginActivity.this,SignUpActivity.class);
+                // send the sports chose by user to signeup view
+                signupActivity.putExtra("nameOfSport",nameOfSport);
                 startActivity(signupActivity);
             }
         });

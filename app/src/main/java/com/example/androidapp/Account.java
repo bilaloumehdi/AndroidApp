@@ -25,11 +25,20 @@ public class Account extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
+
         sessionManagement = new SessionManagement(Account.this);
         db = new DataBaseHelper(Account.this);
 
         id = sessionManagement.getSession();
         user = db.getUserDetails(id) ;
+
+        SessionManagement sessionManagement = new SessionManagement(Account.this);
+        db = new DataBaseHelper(Account.this);
+
+        int id = sessionManagement.getSession();
+        User user = db.getUserDetails(id) ;
+
+
 
     }
 
@@ -53,7 +62,7 @@ public class Account extends AppCompatActivity {
                 // remove the session and open the main activity
                 sessionManagement.removeSession();
                 Toast.makeText(Account.this,"logout clicked",Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(Account.this, MainActivity0.class);
+                Intent it = new Intent(Account.this, MainActivity.class);
                 startActivity(it);
                 return true ;
         }
