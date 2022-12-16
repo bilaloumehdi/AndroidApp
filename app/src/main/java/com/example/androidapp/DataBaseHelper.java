@@ -97,9 +97,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if(result == -1) System.out.println("does not inserted ");
         db.close();
     }
+    // Update the user information
+    // could modify username,password,and sport choices
+    // TODO: adding the sports to the function (later)
+    public boolean UpdateUser(String username,String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues() ;
+        contentValues.put(COL_USERNAME,username);
+        contentValues.put(COL_PASSWORD,password);
+        int result= db.update(TABLE_NAME,contentValues,"",null);
 
-    // TODO: get the user account information
+        if(result == -1) return false ;
 
+        return true ;
+    }
+
+    // get the user account information
     @SuppressLint("Range")
     public  User getUserDetails(int _id){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -114,8 +127,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()){
              String username= cursor.getString(cursor.getColumnIndex(COL_USERNAME));
              String email = cursor.getString(cursor.getColumnIndex(COL_EMAIL));
-             User user = new User(_id,username);
-             return user ;
+             String password = cursor.getString(cursor.getColumnIndex(COL_PASSWORD));
+             String phone = cursor.getString(cursor.getColumnIndex(COL_PHONE));
+
+             return new User(_id,username,email,password,phone);
             }
         }
         return null ;
