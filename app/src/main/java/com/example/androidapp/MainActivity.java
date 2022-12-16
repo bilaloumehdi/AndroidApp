@@ -3,6 +3,7 @@ package com.example.androidapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,12 +17,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends Activity {
     ListView lv;
 
 
-    @Override
-    protected void onStart(){
+
+  @Override
+  protected void onStart(){
         super.onStart();
 
         // check if the user is logged in
@@ -39,12 +42,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     @SuppressLint("MissingInflatedId")
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         /*
         btnLogin = (Button)findViewById(R.id.buttonLogin);

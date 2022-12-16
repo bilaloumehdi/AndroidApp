@@ -3,27 +3,45 @@ package com.example.androidapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Account extends AppCompatActivity {
+import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+public class Account extends AppCompatActivity {
+    private static int REQUEST_CODE = 100;
     DataBaseHelper db ;
     SessionManagement sessionManagement ;
     int id ;
-    User user ;
-
+    ImageView img;
     CardView natationCard ;
     CardView tennisCard ;
     CardView footballCard ;
+    Button btn;
+
+    OutputStream outputStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +51,38 @@ public class Account extends AppCompatActivity {
         natationCard = (CardView) findViewById(R.id.card2);
         footballCard = (CardView) findViewById(R.id.card3);
 
+        img = findViewById(R.id.imageView1);
+        btn = (Button) findViewById(R.id.btndownload);
+
         sessionManagement = new SessionManagement(Account.this);
         db = new DataBaseHelper(Account.this);
 
         id = sessionManagement.getSession();
-        user = db.getUserDetails(id) ;
+        User user = db.getUserDetails(id);
 
         String[] sports = user.getSports().split("/");
 
         displaySports(sports);
+
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (ContextCompat.checkSelfPermission(Account.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
+                    saveImage();
+
+                } else {
+
+
+                    askPermission();
+
+                }
+
+            }
+        });
+
     }
 
     // traitment of the menu
@@ -88,4 +129,84 @@ public class Account extends AppCompatActivity {
         }
     }
 
+
+
+
+    private void askPermission() {
+
+        ActivityCompat.requestPermissions(Account.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
+
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {
+
+        if (requestCode == REQUEST_CODE) {
+
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+
+                saveImage();
+
+            } else {
+
+
+                Toast.makeText(Account.this, "Please provide the required permissions", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
+    private void saveImage() {
+
+
+        BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+
+        File filepath = Environment.getExternalStorageDirectory();
+        File dir = new File(filepath.getAbsolutePath() + "/tableSports/");
+
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+
+
+        File file = new File(dir, System.currentTimeMillis() + ".jpg");
+
+        try {
+            outputStream = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        }
+
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+
+        try {
+            outputStream.flush();
+        } catch (IOException e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        try {
+            outputStream.close();
+        } catch (IOException e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }try{
+            Toast.makeText(getApplicationContext(), "Downloaded into tableSports.", Toast.LENGTH_SHORT).show();
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Image is not loaded yet...", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
+
+
+
+
+
