@@ -17,34 +17,27 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnLogin;
     ListView lv;
 
 
     @Override
     protected void onStart(){
         super.onStart();
+
         // check if the user is logged in
         // if the user is logged in move to Account_Activity
-        //
-        // TODO : uncomment this bloc
 
+        // TODO : uncomment this bloc
         SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
 
 
         int userID = sessionManagement.getSession();
-
-
-
 
         if(userID != -1){
             Intent it = new Intent(MainActivity.this,Account.class);
             startActivity(it);
         }
     }
-
-
-
 
     @SuppressLint("MissingInflatedId")
     @Override
