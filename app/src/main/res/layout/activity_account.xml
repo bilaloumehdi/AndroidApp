@@ -1,28 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:circularflow_radiusInDP="14dp"
+    android:background="@drawable/background_finale"
     tools:context=".Account">
-
-    <Button
-        android:id="@+id/logout_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="se deconnecter "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/welcomeText"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Welcome "
-        app:layout_constraintBottom_toTopOf="@id/logout_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        tools:ignore="ExtraText">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/navbar">
+            <Button
+                android:id="@+id/logout_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="se deconnecter "
+                android:layout_marginLeft="200dp" />
+
+            <TextView
+                android:id="@+id/welcomeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome "
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                />
+
+        </RelativeLayout>
+
+       <androidx.cardview.widget.CardView
+            android:id="@+id/card1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:visibility="visible"
+            android:layout_below="@id/navbar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/tennistable"
+                    />
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageView1"
+                    android:layout_margin="10dp"
+                    android:textSize="16sp"
+                    android:text="Tennis"/>
+
+
+                <ImageView
+                    android:id="@+id/btndownload"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/imageView1"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_action_name" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+      <androidx.cardview.widget.CardView
+            android:id="@+id/card2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_below="@id/card1"
+            android:visibility="visible"
+
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/tennistable"
+                    />
+
+                <TextView
+                    android:id="@+id/tvDescription2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageView2"
+                    android:layout_margin="10dp"
+                    android:textSize="16sp"
+                    android:text="Natation"/>
+
+
+                <ImageView
+                    android:id="@+id/btndownload2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/imageView2"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_action_name" />
+
+
+            </RelativeLayout>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_marginTop="100dp"
+            android:layout_below="@+id/card2"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/tennistable"
+                    />
+
+                <TextView
+                    android:id="@+id/tvDescription3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageView3"
+                    android:layout_margin="10dp"
+                    android:textSize="16sp"
+                    android:text="Football"/>
+
+
+                <ImageView
+                    android:id="@+id/btndownload3"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/imageView3"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_action_name"
+                    />
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+</ScrollView>

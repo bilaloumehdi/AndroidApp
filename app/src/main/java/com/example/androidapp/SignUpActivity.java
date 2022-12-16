@@ -28,10 +28,23 @@ public class SignUpActivity extends AppCompatActivity {
     TextView textViewLogin ;
     // DB
     DataBaseHelper db ;
+    String nameOfSport;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+
+        //geting data form listview
+        Intent intent = this.getIntent();
+        if(intent != null){
+            nameOfSport = intent.getStringExtra("nameOfSport");
+            Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
 
         // getting the View elements
         name= (TextInputLayout) findViewById(R.id.TextViewLayoutName);
@@ -61,7 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
 
                         // back to Home page
-                        Intent homepage = new Intent(SignUpActivity.this, MainActivity0.class);
+                        Intent homepage = new Intent(SignUpActivity.this, Account.class);
                         startActivity(homepage);
                     }else{
                         // show an pop up --> account already exists ;

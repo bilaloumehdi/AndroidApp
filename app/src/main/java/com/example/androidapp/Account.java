@@ -31,8 +31,8 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // remove the session and open the main activity
-                 sessionManagement.removeSession();
-                Intent it = new Intent(Account.this, MainActivity0.class);
+                sessionManagement.removeSession();
+                Intent it = new Intent(Account.this, MainActivity.class);
                 startActivity(it);
             }
         });
