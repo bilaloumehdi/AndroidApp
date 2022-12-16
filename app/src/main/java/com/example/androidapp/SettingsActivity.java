@@ -103,8 +103,8 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
+
     // functio to pop up the alertDialog
     public void createPopup(String msg){
         AlertDialog alertDialog= new AlertDialog.Builder(SettingsActivity.this).create();
