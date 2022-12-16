@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
         int userID = sessionManagement.getSession();
 
+
+
+
         if(userID != -1){
             Intent it = new Intent(MainActivity.this,Account.class);
             startActivity(it);
@@ -68,10 +71,6 @@ public class MainActivity extends AppCompatActivity {
         //System.out.println("row number is " + row);
         //te.setText("row number is " + row);
 
-
-
-
-
         // resources
         // from string file and drawable directory
 
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         String[] name = {"Foot-ball","Natation","Tennis"};
         String[] sid = {String.valueOf(R.string.id1), String.valueOf(R.string.id2), String.valueOf(R.string.id3)};
         String[] prix = {String.valueOf(R.string.prix1), String.valueOf(R.string.prix2), String.valueOf(R.string.prix3)};
-        int[] emploi ={R.drawable.footballtble,R.drawable.swimmingtable,R.drawable.tennistable} ;
+        int[] emploi ={R.drawable.footballtable,R.drawable.swimmingtable,R.drawable.tennistable} ;
 
         // generique list of sports objects
         ArrayList<Sports> userArrayList = new ArrayList<>();
