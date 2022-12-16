@@ -2,6 +2,7 @@ package com.example.androidapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,11 +21,17 @@ public class Account extends AppCompatActivity {
     int id ;
     User user ;
 
+    CardView natationCard ;
+    CardView tennisCard ;
+    CardView footballCard ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
-
+        tennisCard = (CardView) findViewById(R.id.card1);
+        natationCard = (CardView) findViewById(R.id.card2);
+        footballCard = (CardView) findViewById(R.id.card3);
 
         sessionManagement = new SessionManagement(Account.this);
         db = new DataBaseHelper(Account.this);
@@ -32,14 +39,9 @@ public class Account extends AppCompatActivity {
         id = sessionManagement.getSession();
         user = db.getUserDetails(id) ;
 
-        SessionManagement sessionManagement = new SessionManagement(Account.this);
-        db = new DataBaseHelper(Account.this);
+        String[] sports = user.getSports().split("/");
 
-        int id = sessionManagement.getSession();
-        User user = db.getUserDetails(id) ;
-
-
-
+        displaySports(sports);
     }
 
     // traitment of the menu
@@ -68,4 +70,22 @@ public class Account extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    // function to check the visibility and displays the user sports
+    public void displaySports(String[] sports){
+        for(String sport: sports)
+        {
+            if (sport.equals("Tennis")) {
+                tennisCard.setVisibility(View.VISIBLE);
+            }
+            if (sport.equals("Foot-ball")) {
+                footballCard.setVisibility(View.VISIBLE);
+            }
+            if (sport.equals("Natation")) {
+                natationCard.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
 }

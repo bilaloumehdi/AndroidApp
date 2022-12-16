@@ -6,13 +6,17 @@ public class User {
     private String email ;
     public String password ;
     private String phone ;
+    private String sports ;
 
-    public User(int id, String username, String email, String password, String phone) {
+
+
+    public User(int id, String username, String email, String password, String phone, String sports) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.phone = phone;
+        this.sports = sports;
     }
 
     public User(int id, String username) {
@@ -46,5 +50,9 @@ public class User {
 
     public String getPhone() {
         return phone;
+    }
+
+    public String getSports() {
+        return sports;
     }
 }

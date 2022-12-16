@@ -28,7 +28,7 @@
             app:cardCornerRadius="15dp"
             app:cardElevation="2dp"
             android:foreground="?android:attr/selectableItemBackground"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_below="@id/navbar">
 
             <RelativeLayout
@@ -79,9 +79,7 @@
             app:cardElevation="2dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:layout_below="@id/card1"
-            android:visibility="visible"
-
-            >
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -134,7 +132,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:layout_marginTop="100dp"
             android:layout_below="@+id/card2"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="match_parent"

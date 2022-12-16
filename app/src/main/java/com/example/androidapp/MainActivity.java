@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         int[] imageId = {R.drawable.listfootback, R.drawable.listswiningback2, R.drawable.listtennisback};
         String[] name = {"Foot-ball","Natation","Tennis"};
-        String[] sid = {String.valueOf(R.string.id1), String.valueOf(R.string.id2), String.valueOf(R.string.id3)};
+         String[] sid = {String.valueOf(R.string.id1), String.valueOf(R.string.id2), String.valueOf(R.string.id3)};
         String[] prix = {String.valueOf(R.string.prix1), String.valueOf(R.string.prix2), String.valueOf(R.string.prix3)};
         int[] emploi ={R.drawable.footballtable,R.drawable.swimmingtable,R.drawable.tennistable} ;
 
@@ -94,16 +94,12 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent in = new Intent(MainActivity.this, LoginActivity.class);
-                in.putExtra("id", sid[position] );
                 in.putExtra("name", name[position]);
-                in.putExtra("prix", prix[position]);
-                in.putExtra("imageId", imageId[position]);
-                in.putExtra("emploi", emploi[position]);
                 //System.out.println(name[position] +" clicked");
                 startActivity(in);
 
 
-                //  Toast.makeText(MainActivity.this,"---"+ listAdapter.getItem(position),Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity.this,"---"+ listAdapter.getItem(position),Toast.LENGTH_SHORT).show();
 
 
             }

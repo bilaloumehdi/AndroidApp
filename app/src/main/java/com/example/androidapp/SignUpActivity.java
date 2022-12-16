@@ -34,18 +34,6 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-
-        //geting data form listview
-        Intent intent = this.getIntent();
-        if(intent != null){
-            nameOfSport = intent.getStringExtra("nameOfSport");
-            Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
-        }
-
-
-
-
-
         // getting the View elements
         name= (TextInputLayout) findViewById(R.id.TextViewLayoutName);
         email = (TextInputLayout) findViewById(R.id.TextViewLayoutEmail);
@@ -59,6 +47,23 @@ public class SignUpActivity extends AppCompatActivity {
         // DB
         db = new DataBaseHelper(SignUpActivity.this);
 
+        //geting data form listview
+        Intent intent = this.getIntent();
+        if(intent != null){
+            nameOfSport = intent.getStringExtra("nameOfSport");
+            Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
+            switch(nameOfSport){
+                case "Natation":
+                    natationChbx.setChecked(true);
+                    break;
+                case "Tennis":
+                    tennisChbx.setChecked(true);
+                    break;
+                case "Foot-ball":
+                    footballChbx.setChecked(true);
+                    break;
+            }
+        }
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,10 +72,21 @@ public class SignUpActivity extends AppCompatActivity {
                     String mail =  email.getEditText().getText().toString().trim();
                     String psswd =  password.getEditText().getText().toString().trim();
                     String mobile =  phone.getEditText().getText().toString().trim();
-                    System.out.println(user + " " + mail );
+                    // getting the sports used
+                    String sports= "";
+                    if(tennisChbx.isChecked()){
+                        sports = sports + "Tennis/";
+                    }
+                    if(footballChbx.isChecked()){
+                        sports = sports + "Foot-ball/";
+                    }
+                    if(natationChbx.isChecked()){
+                        sports = sports + "Natation/";
+                    }
+
                     //check if the user exists already or not
                     if(db.checkUser(user,psswd) == false){
-                        db.addUser(user,mail,psswd,mobile);
+                        db.addUser(user,mail,psswd,mobile,sports);
                         Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
 
                         // back to Home page
