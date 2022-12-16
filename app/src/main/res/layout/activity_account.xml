@@ -106,7 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/tennistable"
+                    android:src="@drawable/swimmingtable"
                     />
 
                 <TextView
@@ -159,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/tennistable"
+                    android:src="@drawable/footballtable"
                     />
 
                 <TextView
@@ -188,7 +188,6 @@
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
-
 
     </RelativeLayout>
 </ScrollView>
