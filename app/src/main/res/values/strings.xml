@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AndroidApp</string>
+    <string name="id1">1</string>
+    <string name="id2">2</string>
+    <string name="id3">3</string>
+    <string name="prix1">350 mad</string>
+    <string name="prix2">400 mad</string>
+    <string name="prix3">500 mad</string>
 </resources>
