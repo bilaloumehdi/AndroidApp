@@ -34,7 +34,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class Account extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity {
     private static int REQUEST_CODE = 100;
     DataBaseHelper db ;
     SessionManagement sessionManagement ;
@@ -67,8 +67,8 @@ public class Account extends AppCompatActivity {
         Button btnToUploadFootBall = (Button) findViewById(R.id.btndownload3);
 
 
-        sessionManagement = new SessionManagement(Account.this);
-        db = new DataBaseHelper(Account.this);
+        sessionManagement = new SessionManagement(AccountActivity.this);
+        db = new DataBaseHelper(AccountActivity.this);
         id = sessionManagement.getSession();
         User user = db.getUserDetails(id);
 
@@ -76,7 +76,6 @@ public class Account extends AppCompatActivity {
         TextView userConnectedUserName;
         userConnectedUserName = findViewById(R.id.UserName);
         userConnectedUserName.setText( userConnectedUserName.getText().toString() +" "+ user.getUsername().toUpperCase(Locale.ROOT).toString());
-
 
         String[] sports = user.getSports().split("/");
         displaySports(sports);
@@ -88,7 +87,7 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 img = (ImageView)findViewById(R.id.imageView1);
-                if (ContextCompat.checkSelfPermission(Account.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(AccountActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     saveImage();
                 } else {
                     askPermission();
@@ -102,7 +101,7 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 img = (ImageView)findViewById(R.id.imageView2);
-                if (ContextCompat.checkSelfPermission(Account.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(AccountActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     saveImage();
                 } else {
                     askPermission();
@@ -117,7 +116,7 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 img = (ImageView)findViewById(R.id.imageView3);
-                if (ContextCompat.checkSelfPermission(Account.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(AccountActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     saveImage();
                 } else {
                     askPermission();
@@ -141,15 +140,15 @@ public class Account extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.settings:
-               Intent intent = new Intent(Account.this,SettingsActivity.class);
+               Intent intent = new Intent(AccountActivity.this,SettingsActivity.class);
                 startActivity(intent);
                 return true ;
             case R.id.logout_option:
                 //if click on logout --> destroy session
                 // remove the session and open the main activity
                 sessionManagement.removeSession();
-                Toast.makeText(Account.this,"logout clicked",Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(Account.this, MainActivity.class);
+
+                Intent it = new Intent(AccountActivity.this, MainActivity.class);
                 startActivity(it);
                 return true ;
         }
@@ -179,7 +178,7 @@ public class Account extends AppCompatActivity {
   // if the user give us permission the manifest file is changed automatically by adding WRITE_EXTERNAL_STORAGE permission
     private void askPermission() {
 
-        ActivityCompat.requestPermissions(Account.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
+        ActivityCompat.requestPermissions(AccountActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
 
     }
 
@@ -194,7 +193,7 @@ public class Account extends AppCompatActivity {
                 saveImage();
 
             } else {
-                Toast.makeText(Account.this, "Please provide the required permissions", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountActivity.this, "Please provide the required permissions", Toast.LENGTH_SHORT).show();
             }
 
         }

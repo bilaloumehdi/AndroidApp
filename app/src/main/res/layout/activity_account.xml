@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     app:circularflow_radiusInDP="14dp"
     android:background="@drawable/background_finale"
-    tools:context=".Account">
+    tools:context=".AccountActivity">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:ignore="ExtraText"
         android:layout_marginTop="10dp">
 
@@ -24,8 +24,7 @@
             app:cardCornerRadius="15dp"
             app:cardElevation="2dp"
             android:foreground="?android:attr/selectableItemBackground"
-            android:visibility="visible"
-            >
+            android:visibility="visible">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -37,7 +36,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
-                    android:paddingLeft="8dp"/>
+                    android:paddingStart="8dp"
+                    android:textColor="@color/black"/>
 
 
                 <TextView
@@ -45,9 +45,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="BIENVENUE "
-                    android:paddingLeft="10dp"
+                    android:text="@string/bienvenue"
+                    android:textColor="@color/black"
+                    android:paddingStart="10dp"
                     android:layout_below="@id/tvDateTime"
+
                     />
 
 
@@ -65,7 +67,7 @@
             app:cardCornerRadius="15dp"
             app:cardElevation="2dp"
             android:foreground="?android:attr/selectableItemBackground"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_below="@id/navbar">
 
             <RelativeLayout
@@ -78,6 +80,7 @@
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/tennistable"
+                    android:contentDescription="@string/tennis_timetable"
                     />
 
                 <TextView
@@ -85,9 +88,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imageView1"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/tennis"
                     android:textSize="16sp"
-                    android:text="Tennis"/>
+                    android:textColor="@color/black"/>
 
                 <Button
                     android:id="@+id/btndownload"
@@ -116,7 +123,7 @@
             app:cardElevation="2dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:layout_below="@id/card1"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -128,6 +135,7 @@
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/swimmingtable"
+                    android:contentDescription="@string/tennis_timetable"
                     />
 
                 <TextView
@@ -135,9 +143,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imageView2"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/natation"
                     android:textSize="16sp"
-                    android:text="Natation"/>
+                    android:textColor="@color/black"/>
 
 
                 <Button
@@ -182,6 +194,7 @@
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/footballtable"
+                    android:contentDescription="@string/football_timetable"
                     />
 
                 <TextView
@@ -191,7 +204,8 @@
                     android:layout_below="@id/imageView3"
                     android:layout_margin="10dp"
                     android:textSize="16sp"
-                    android:text="Football"/>
+                    android:text="@string/foot_ball"
+                    android:textColor="@color/black"/>
 
 
                 <Button

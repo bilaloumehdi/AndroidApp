@@ -1,0 +1,16 @@
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <item
+            android:id="@+id/loginOption"
+            android:title="@string/se_connecter"
+
+            app:showAsAction="withText"
+            />
+
+        <item
+            android:id="@+id/signupOption"
+            android:title="se deconnecter "
+            app:showAsAction="withText"
+            />
+</menu>

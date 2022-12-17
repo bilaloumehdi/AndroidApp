@@ -18,7 +18,7 @@
             android:id="@+id/TextViewCreateAcc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="45dp"
             android:fontFamily="@font/signika_bold"
 
             android:gravity="center"
