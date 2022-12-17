@@ -29,6 +29,7 @@
                 android:id="@+id/profile_pic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/sport_image"
                 />
 
 
@@ -39,7 +40,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="2dp"
             android:layout_marginBottom="10dp"
-            android:text="Foot-Ball"
+            android:text="@string/foot_ball"
             android:textColor="#000"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -49,10 +50,10 @@
             android:id="@+id/paye"
             android:layout_width="69dp"
             android:layout_height="35dp"
-            android:text="440 mad"
+            android:text="@string/_440_mad"
             android:textColor="#F7FF07"
             android:textStyle="bold"
-            android:layout_marginLeft="340dp"
+            android:layout_marginStart="340dp"
             android:layout_marginTop="120dp"
             />
 

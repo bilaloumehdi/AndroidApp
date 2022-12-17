@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:ignore="ExtraText">
 
         <RelativeLayout
@@ -41,6 +41,7 @@
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/tennistable"
+                    android:contentDescription="@string/tennis_timetable"
                     />
 
                 <TextView
@@ -50,7 +51,7 @@
                     android:layout_below="@id/imageView1"
                     android:layout_margin="10dp"
                     android:textSize="16sp"
-                    android:text="Tennis"/>
+                    android:text="@string/tennis"/>
 
 
                 <Button
@@ -91,6 +92,7 @@
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/swimmingtable"
+                    android:contentDescription="@string/swimming_timetable"
                     />
 
                 <TextView
@@ -100,7 +102,7 @@
                     android:layout_below="@id/imageView2"
                     android:layout_margin="10dp"
                     android:textSize="16sp"
-                    android:text="Natation"/>
+                    android:text="@string/natation"/>
 
 
                 <Button
@@ -144,6 +146,7 @@
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/footballtable"
+                    android:contentDescription="@string/football_timetable"
                     />
 
                 <TextView
@@ -153,7 +156,7 @@
                     android:layout_below="@id/imageView3"
                     android:layout_margin="10dp"
                     android:textSize="16sp"
-                    android:text="Football"/>
+                    android:text="@string/football"/>
 
 
                 <Button
