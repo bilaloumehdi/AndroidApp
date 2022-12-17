@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -29,6 +30,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Account extends AppCompatActivity {
     private static int REQUEST_CODE = 100;
@@ -43,6 +47,7 @@ public class Account extends AppCompatActivity {
 
     OutputStream outputStream;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,32 +55,71 @@ public class Account extends AppCompatActivity {
         tennisCard = (CardView) findViewById(R.id.card1);
         natationCard = (CardView) findViewById(R.id.card2);
         footballCard = (CardView) findViewById(R.id.card3);
-
         img = findViewById(R.id.imageView1);
-        btn = (Button) findViewById(R.id.btndownload);
+
+
+        TextView tvDateTime = findViewById(R.id.tvDateTime);
+        String currentDateTimeString = DateFormat.getDateInstance().format(new Date());
+        tvDateTime.setText(currentDateTimeString);
+
+        Button btnToUploadTennis = (Button) findViewById(R.id.btndownload);
+        Button btnToUploadSwimming = (Button) findViewById(R.id.btndownload2);
+        Button btnToUploadFootBall = (Button) findViewById(R.id.btndownload3);
+
 
         sessionManagement = new SessionManagement(Account.this);
         db = new DataBaseHelper(Account.this);
-
         id = sessionManagement.getSession();
         User user = db.getUserDetails(id);
 
-        String[] sports = user.getSports().split("/");
+        // display the name of user in top of our interface
+        TextView userConnectedUserName;
+        userConnectedUserName = findViewById(R.id.UserName);
+        userConnectedUserName.setText( userConnectedUserName.getText().toString() +" "+ user.getUsername().toUpperCase(Locale.ROOT).toString());
 
+
+        String[] sports = user.getSports().split("/");
         displaySports(sports);
 
 
-        btn.setOnClickListener(new View.OnClickListener() {
+
+       // upload time table for Tennis
+        btnToUploadTennis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                img = (ImageView)findViewById(R.id.imageView1);
                 if (ContextCompat.checkSelfPermission(Account.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-
                     saveImage();
-
                 } else {
+                    askPermission();
 
+                }
 
+            }
+        });
+        // upload time table for Swimming
+        btnToUploadSwimming.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                img = (ImageView)findViewById(R.id.imageView2);
+                if (ContextCompat.checkSelfPermission(Account.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    saveImage();
+                } else {
+                    askPermission();
+
+                }
+
+            }
+        });
+
+      // upload time table for football
+        btnToUploadFootBall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                img = (ImageView)findViewById(R.id.imageView3);
+                if (ContextCompat.checkSelfPermission(Account.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    saveImage();
+                } else {
                     askPermission();
 
                 }
@@ -131,14 +175,15 @@ public class Account extends AppCompatActivity {
 
 
 
-
+  // function to ask  permission for uploading images in user device
+  // if the user give us permission the manifest file is changed automatically by adding WRITE_EXTERNAL_STORAGE permission
     private void askPermission() {
 
         ActivityCompat.requestPermissions(Account.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
 
     }
 
-
+    // if the request  Permission is 100 so we save the image
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {
 
@@ -146,14 +191,10 @@ public class Account extends AppCompatActivity {
 
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-
                 saveImage();
 
             } else {
-
-
                 Toast.makeText(Account.this, "Please provide the required permissions", Toast.LENGTH_SHORT).show();
-
             }
 
         }
@@ -162,15 +203,18 @@ public class Account extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+// function to upload time table image in "/uploadImage/" directory
+// after upload  this image is stored in /uploadImage/
+// to see the image uploaded  go to   :  setting -> Storage -> other -> uploadImage
+
 
     private void saveImage() {
-
 
         BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
 
         File filepath = Environment.getExternalStorageDirectory();
-        File dir = new File(filepath.getAbsolutePath() + "/tableSports/");
+        File dir = new File(filepath.getAbsolutePath() + "/uploadImage/");
 
         if (!dir.exists()) {
             dir.mkdir();
