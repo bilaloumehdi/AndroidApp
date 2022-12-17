@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <TextView
@@ -23,9 +23,9 @@
 
             android:gravity="center"
 
-            android:text="creer un nouveau compte"
+            android:text="@string/creer_un_nouveau_compte"
             android:textColor="@color/black"
-            android:textSize="50dp" />
+            android:textSize="50sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TextViewLayoutName"
@@ -36,7 +36,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:hint="Nom et Prénom"
+            android:hint="@string/nom_et_pr_nom"
 
             app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
@@ -70,7 +70,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:hint="E-mail"
+            android:hint="@string/e_mail"
 
             app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
@@ -102,7 +102,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:hint="Mot de passe "
+            android:hint="@string/mot_de_passe"
 
             app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
@@ -134,7 +134,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:hint="numero de téléphone"
+            android:hint="@string/numero_de_t_l_phone"
             app:boxBackgroundColor="@color/blue"
             app:boxBackgroundMode="outline"
             app:boxCornerRadiusBottomEnd="14dp"
@@ -168,10 +168,10 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
             android:padding="10dp"
-            android:text="choisir les sports"
+            android:text="@string/choisir_les_sports"
 
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:id="@+id/sportChoices"
@@ -186,9 +186,9 @@
                 android:id="@+id/NatationCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:text="Natation"
+                android:text="@string/natation"
                 android:buttonTint="@color/blue"
                 />
 
@@ -196,18 +196,18 @@
                 android:id="@+id/TennisCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:text="Tennis"
+                android:text="@string/tennis"
                 android:buttonTint="@color/blue"/>
 
             <CheckBox
                 android:id="@+id/FootCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:text="foot-ball"
+                android:text="@string/foot_ball"
                 android:buttonTint="@color/blue"/>
 
 
@@ -222,8 +222,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/blue"
-            android:text="S'identifier "
-            android:textColor="@color/black"
+            android:text="@string/s_identifier"
+            android:textColor="@color/white"
             android:fontFamily="@font/signika_bold"
             />
 
@@ -243,21 +243,20 @@
                 android:id="@+id/TextViewRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="as-tu deja un compte ?"
+                android:text="@string/as_tu_deja_un_compte"
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/TextViewLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:fontFamily="@font/signika_bold"
-                android:text=" se connecter."
+                android:text="@string/se_connecter"
                 android:textStyle="bold"
                 android:textColor="@color/blue"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
 

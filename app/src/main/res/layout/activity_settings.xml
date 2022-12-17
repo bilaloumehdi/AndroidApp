@@ -10,7 +10,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/TextViewSettings"
@@ -21,9 +21,9 @@
 
                 android:gravity="center"
 
-                android:text="Pramétres "
+                android:text="@string/pram_tres"
                 android:textColor="@color/black"
-                android:textSize="50dp" />
+                android:textSize="50sp" />
 
             <TextView
                 android:id="@+id/TextViewUsername"
@@ -36,10 +36,10 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:paddingTop="10dp"
-                android:text="Nom d'utilisateur"
+                android:text="@string/nom_d_utilisateur"
 
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextViewLayoutName"
@@ -49,7 +49,7 @@
                 android:layout_below="@id/TextViewUsername"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:hint="nom d'utilisateur "
+                android:hint="@string/nom_d_utilisateur"
 
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
@@ -84,10 +84,10 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:paddingTop="10dp"
-                android:text="Mot de passe "
+                android:text="@string/mot_de_passe"
 
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextViewLayoutOldPsswd"
@@ -98,7 +98,7 @@
                 android:layout_marginLeft="30dp"
 
                 android:layout_marginRight="30dp"
-                android:hint="l'ancien mot de passe "
+                android:hint="@string/l_ancien_mot_de_passe"
 
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
@@ -130,7 +130,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:hint=" Nouveau Mot de passe "
+                android:hint="@string/nouveau_mot_de_passe"
 
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
@@ -162,7 +162,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:hint="confirmer le mot de passe"
+                android:hint="@string/confirmer_le_mot_de_passe"
                 app:boxBackgroundColor="@color/blue"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="14dp"
@@ -195,10 +195,10 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:padding="10dp"
-                android:text="les sports choisis "
+                android:text="@string/les_sports_choisis"
 
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:id="@+id/sportChoices"
@@ -212,9 +212,9 @@
                     android:id="@+id/NatationCheckbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:text="Natation"
+                    android:text="@string/natation"
                     android:buttonTint="@color/blue"
                     />
 
@@ -222,18 +222,18 @@
                     android:id="@+id/TennisCheckbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:text="Tennis"
+                    android:text="@string/tennis"
                     android:buttonTint="@color/blue"/>
 
                 <CheckBox
                     android:id="@+id/FootCheckbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:text="foot-ball"
+                    android:text="@string/foot_ball"
                     android:buttonTint="@color/blue"/>
 
             </LinearLayout>
@@ -252,10 +252,9 @@
                     android:id="@+id/Btn_save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/sportChoices"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:backgroundTint="@color/blue"
-                    android:text="Enrigistrer"
+                    android:text="@string/enregistrer"
                     android:textColor="@color/white"
                     android:fontFamily="@font/signika_bold"
                     />
@@ -263,17 +262,14 @@
                     android:id="@+id/Btn_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/sportChoices"
-                    android:layout_marginLeft="10dp"
-                    android:text="retourner"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/retourner"
                     android:backgroundTint="@color/blue"
                     android:textColor="@color/white"
                     android:fontFamily="@font/signika_bold"
                     />
 
             </LinearLayout>
-
-
 
 
         </RelativeLayout>
