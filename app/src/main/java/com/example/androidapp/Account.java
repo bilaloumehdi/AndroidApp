@@ -70,14 +70,14 @@ public class Account extends AppCompatActivity {
         id = sessionManagement.getSession();
         User user = db.getUserDetails(id);
 
-        // display the name of user in top of our interface
         TextView userConnectedUserName;
-        userConnectedUserName = findViewById(R.id.UserName);
-        userConnectedUserName.setText( userConnectedUserName.getText().toString() +" "+ user.getUsername().toUpperCase(Locale.ROOT).toString());
-
-
-        String[] sports = user.getSports().split("/");
-        displaySports(sports);
+        if(user != null){
+            // display the name of user in top of our interface
+            userConnectedUserName = findViewById(R.id.UserName);
+            userConnectedUserName.setText( userConnectedUserName.getText().toString() +" "+ user.getUsername().toUpperCase(Locale.ROOT).toString());
+            String[] sports = user.getSports().split("/");
+            displaySports(sports);
+        }
 
 
 
@@ -240,7 +240,7 @@ public class Account extends AppCompatActivity {
         } catch (IOException e) {
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }try{
-            Toast.makeText(getApplicationContext(), "Downloaded into tableSports.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Downloaded into uploadImage .", Toast.LENGTH_SHORT).show();
         }catch(Exception e){
             Toast.makeText(getApplicationContext(), "Image is not loaded yet...", Toast.LENGTH_SHORT).show();
         }

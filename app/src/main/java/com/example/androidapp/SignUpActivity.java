@@ -55,7 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         if(intent != null){
             nameOfSport = intent.getStringExtra("nameOfSport");
-            Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
             switch(nameOfSport){
                 case "Natation":
                     natationChbx.setChecked(true);
@@ -91,7 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
                     //check if the user exists already or not
                     if(db.checkUser(user,psswd) == false){
                         db.addUser(user,mail,psswd,mobile,sports);
-                        Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
+                       Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
 
                         // back to Home page
                         Intent homepage = new Intent(SignUpActivity.this, Account.class);

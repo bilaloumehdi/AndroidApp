@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         if(intent != null){
             nameOfSport = intent.getStringExtra("name");
-            Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
         }
 
         // getting the View elements
