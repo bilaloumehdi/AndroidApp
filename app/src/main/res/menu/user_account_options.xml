@@ -4,14 +4,12 @@
 <item
     android:id="@+id/settings"
     android:title="paramétres"
-    android:icon="@drawable/ic_settings"
     app:showAsAction="withText"
     />
 
     <item
         android:id="@+id/logout_option"
         android:title="se déconnecter "
-        android:icon="@drawable/ic_settings"
         app:showAsAction="withText"
         />
 </menu>

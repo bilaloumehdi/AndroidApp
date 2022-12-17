@@ -28,11 +28,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // go back to the previous activity
+        getSupportActionBar().setTitle(R.string.se_connecter);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //geting data form listview
         Intent intent = this.getIntent();
         if(intent != null){
             nameOfSport = intent.getStringExtra("name");
-            Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
+
         }
 
         // getting the View elements
@@ -73,10 +77,10 @@ public class LoginActivity extends AppCompatActivity {
                         User userObj = new User(db.getUserId(),user);
                         sessionManagement.saveSession(userObj);
 
-                        Toast.makeText(LoginActivity.this," connection établie ",Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this," vous êtes connecté ",Toast.LENGTH_LONG).show();
 
                         // back to the home page
-                        Intent homepage = new Intent(LoginActivity.this,Account.class);
+                        Intent homepage = new Intent(LoginActivity.this, AccountActivity.class);
                         startActivity(homepage);
 
                     }else {

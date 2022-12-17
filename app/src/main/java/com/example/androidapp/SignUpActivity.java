@@ -34,6 +34,10 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        // go back to the previous activity option
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         // getting the View elements
         name= (TextInputLayout) findViewById(R.id.TextViewLayoutName);
         email = (TextInputLayout) findViewById(R.id.TextViewLayoutEmail);
@@ -51,7 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         if(intent != null){
             nameOfSport = intent.getStringExtra("nameOfSport");
-            Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
+
             switch(nameOfSport){
                 case "Natation":
                     natationChbx.setChecked(true);
@@ -90,38 +94,22 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
 
                         // back to Home page
-                        Intent homepage = new Intent(SignUpActivity.this, Account.class);
+                        Intent homepage = new Intent(SignUpActivity.this, AccountActivity.class);
                         startActivity(homepage);
                     }else{
                         // show an pop up --> account already exists ;
-                        AlertDialog alertDialog= new AlertDialog.Builder(SignUpActivity.this).create();
-                        alertDialog.setTitle("le compte existe déja ! ");
-                        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                alertDialog.hide();
-                            }
-                        });
-                        alertDialog.show();
+                        Functions.createPopup(SignUpActivity.this,"Le compte existe déja");
                     }
 
                 }catch(SQLiteException e){
                     // show an pop up --> there is an exception  ;
-                    AlertDialog alertDialog= new AlertDialog.Builder(SignUpActivity.this).create();
-                    alertDialog.setTitle("une erreur si produit , merci de ressayer plus tard ");
-                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            alertDialog.hide();
-                        }
-                    });
-                    alertDialog.show();
+                    Functions.createPopup(SignUpActivity.this,"une erreur si produit , merci de ressayer plus tard ");
                 }
 
             }
         });
 
-        // if the user clicks the "se connecter" text --> return to the login activitytextViewLogin
+        // if the user clicks the "se connecter" text --> return to the login LoginActivity
         textViewLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,5 +119,4 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
-
 }
