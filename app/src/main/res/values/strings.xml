@@ -1,9 +1,35 @@
 <resources>
-    <string name="app_name">AndroidApp</string>
+    <string name="app_name">Club Sport</string>
     <string name="id1">1</string>
     <string name="id2">2</string>
     <string name="id3">3</string>
     <string name="prix1">350 mad</string>
     <string name="prix2">400 mad</string>
     <string name="prix3">500 mad</string>
+    <string name="tennis">Tennis</string>
+    <string name="natation">Natation</string>
+    <string name="football">Football</string>
+    <string name="tennis_timetable">tennis timetable</string>
+    <string name="swimming_timetable">swimming timetable</string>
+    <string name="football_timetable">football timetable</string>
+    <string name="se_connecter">se connecter</string>
+    <string name="e_mail">E-mail</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="s_identifier">S\'identifier</string>
+    <string name="pram_tres">Pramétres</string>
+    <string name="nom_d_utilisateur">Nom d\'utilisateur</string>
+    <string name="l_ancien_mot_de_passe">l\'ancien mot de passe</string>
+    <string name="nouveau_mot_de_passe">Nouveau Mot de passe</string>
+    <string name="confirmer_le_mot_de_passe">confirmer le mot de passe</string>
+    <string name="les_sports_choisis">les sports choisis</string>
+    <string name="foot_ball">foot-ball</string>
+    <string name="enregistrer">Enregistrer</string>
+    <string name="retourner">retourner</string>
+    <string name="creer_un_nouveau_compte">creer un nouveau compte</string>
+    <string name="nom_et_pr_nom">Nom et Prénom</string>
+    <string name="numero_de_t_l_phone">numero de téléphone</string>
+    <string name="choisir_les_sports">choisir les sports</string>
+    <string name="as_tu_deja_un_compte">as-tu deja un compte ?</string>
+    <string name="sport_image">sport_image</string>
+    <string name="_440_mad">440 mad</string>
 </resources>
