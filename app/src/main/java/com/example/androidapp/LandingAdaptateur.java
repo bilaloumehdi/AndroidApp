@@ -30,13 +30,13 @@ public class LandingAdaptateur extends ArrayAdapter<Sports> {
         ImageView imageView = convertView.findViewById(R.id.profile_pic);
         TextView sportName = convertView.findViewById(R.id.personName);
        // TextView id = convertView.findViewById(R.id.number);
-       // TextView prix = convertView.findViewById(R.id.paye);
+       TextView prix = convertView.findViewById(R.id.paye);
 
 
         imageView.setImageResource(sp.imageId);
        sportName.setText(sp.name);
         //id.setText("voir plus");
-        //prix.setText(sp.prix);*/
+        prix.setText(sp.prix);
 
         return convertView;
 
