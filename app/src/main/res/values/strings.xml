@@ -16,7 +16,7 @@
     <string name="e_mail">E-mail</string>
     <string name="mot_de_passe">Mot de passe</string>
     <string name="s_identifier">S\'identifier</string>
-    <string name="pram_tres">Pramétres</string>
+    <string name="pram_tres">Pramètres</string>
     <string name="nom_d_utilisateur">Nom d\'utilisateur</string>
     <string name="l_ancien_mot_de_passe">l\'ancien mot de passe</string>
     <string name="nouveau_mot_de_passe">Nouveau Mot de passe</string>
@@ -33,4 +33,7 @@
     <string name="sport_image">sport_image</string>
     <string name="_440_mad">440 mad</string>
     <string name="bienvenue">BIENVENUE</string>
+    <string name="se_d_connecter">se déconnecter</string>
+    <string name="param_tres">Paramètres</string>
+    <string name="se_deconnecter">se déconnecter </string>
 </resources>

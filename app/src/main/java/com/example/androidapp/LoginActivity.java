@@ -28,9 +28,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // go back to the previous activity
+
         getSupportActionBar().setTitle(R.string.se_connecter);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // go back to the previous activity
+       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //geting data form listview
         Intent intent = this.getIntent();
@@ -73,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                     if(isExists){
 
                         // create the user object & Save The session
-                        //TODO: get id from the db
                         User userObj = new User(db.getUserId(),user);
                         sessionManagement.saveSession(userObj);
 

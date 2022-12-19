@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <item
     android:id="@+id/settings"
-    android:title="paramétres"
+    android:title="@string/param_tres"
     app:showAsAction="withText"
     />
 
     <item
         android:id="@+id/logout_option"
-        android:title="se déconnecter "
+        android:title="@string/se_deconnecter"
         app:showAsAction="withText"
         />
 </menu>
