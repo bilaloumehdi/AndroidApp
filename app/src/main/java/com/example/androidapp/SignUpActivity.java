@@ -29,6 +29,25 @@ public class SignUpActivity extends AppCompatActivity {
     // DB
     DataBaseHelper db ;
     String nameOfSport;
+    SessionManagement sessionManagement;
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        // check if the user is logged in
+        // if the user is logged in move to Account_Activity
+
+
+        sessionManagement = new SessionManagement(SignUpActivity.this);
+
+
+        int userID = sessionManagement.getSession();
+
+        if(userID != -1){
+            Intent it = new Intent(SignUpActivity.this, AccountActivity.class);
+            startActivity(it);
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,15 +106,26 @@ public class SignUpActivity extends AppCompatActivity {
                     if(natationChbx.isChecked()){
                         sports = sports + "Natation/";
                     }
-
+                        SessionManagement sessionManagement = new SessionManagement(SignUpActivity.this);
                     //check if the user exists already or not
-                    if(db.checkUser(user,psswd) == false){
-                        db.addUser(user,mail,psswd,mobile,sports);
-                        Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
+                    if(!db.checkUser(mail,psswd)){
 
-                        // back to Home page
-                        Intent homepage = new Intent(SignUpActivity.this, AccountActivity.class);
-                        startActivity(homepage);
+                         db.addUser(user,mail,psswd,mobile,sports);
+
+                        // verify if the user is added to db && for assign the user id to the id attribut (in checkUser())
+                        if(db.checkUser(mail,psswd)){
+                            User userObjet = new User(db.getUserId(),mail);
+                            sessionManagement.saveSession(userObjet);
+
+                            Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
+
+                            // go to account activity
+                            Intent accountIntent = new Intent(SignUpActivity.this, AccountActivity.class);
+                            startActivity(accountIntent);
+                        }else{
+                            Functions.createPopup(SignUpActivity.this,"une erreur si produit , ressayez plus tard.");
+                        }
+
                     }else{
                         // show an pop up --> account already exists ;
                         Functions.createPopup(SignUpActivity.this,"Le compte existe déja");

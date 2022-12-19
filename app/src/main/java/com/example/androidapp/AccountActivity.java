@@ -75,7 +75,7 @@ public class AccountActivity extends AppCompatActivity {
         // display the name of user in top of our interface
         TextView userConnectedUserName;
         userConnectedUserName = findViewById(R.id.UserName);
-        userConnectedUserName.setText( userConnectedUserName.getText().toString() +" "+ user.getUsername().toUpperCase(Locale.ROOT).toString());
+       userConnectedUserName.setText( userConnectedUserName.getText().toString() +" "+ user.getUsername().toUpperCase(Locale.ROOT).toString());
 
         String[] sports = user.getSports().split("/");
         displaySports(sports);

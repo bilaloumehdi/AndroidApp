@@ -98,7 +98,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
     // Update the user information
     // could modify username,password,and sport choices
-    // TODO: adding the sports to the function (later)
+
     public boolean UpdateUser(String username,String password,String sports){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues() ;

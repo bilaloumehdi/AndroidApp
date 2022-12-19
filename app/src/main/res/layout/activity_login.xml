@@ -90,7 +90,6 @@
         android:text="@string/se_connecter"
         android:layout_below="@id/TextViewLayoutPassword"
         android:backgroundTint="@color/blue"
-
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"/>
 
