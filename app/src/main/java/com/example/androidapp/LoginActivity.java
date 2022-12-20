@@ -37,12 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         //geting data form listview
         Intent intent = this.getIntent();
         if(intent != null){
+            // gettign the sports name that was clicked from the user
             nameOfSport = intent.getStringExtra("name");
-<<<<<<< HEAD
-
-=======
-           // Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
         }
 
         // getting the View elements
@@ -90,15 +86,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     }else {
                         // show an pop up --> authentication failed ;
-                        AlertDialog alertDialog= new AlertDialog.Builder(LoginActivity.this).create();
-                        alertDialog.setTitle("email et/ou mot de passe est incorrect ");
-                        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                alertDialog.hide();
-                            }
-                        });
-                        alertDialog.show();
+                        Functions.createPopup(LoginActivity.this,"email et/ou mot de passe est incorrect ");
                     }
 
                 }catch(SQLiteException e){
