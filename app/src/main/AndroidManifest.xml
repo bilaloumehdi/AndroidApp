@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
+
     xmlns:tools="http://schemas.android.com/tools">
-=======
-    xmlns:tools="http://schemas.android.com/tools" >
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
+
+
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
