@@ -1,5 +1,6 @@
 package com.example.androidapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +8,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -74,7 +78,11 @@ public class SignUpActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         if(intent != null){
             nameOfSport = intent.getStringExtra("nameOfSport");
+<<<<<<< HEAD
 
+=======
+           // Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
+>>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
             switch(nameOfSport){
                 case "Natation":
                     natationChbx.setChecked(true);
@@ -108,6 +116,7 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                         SessionManagement sessionManagement = new SessionManagement(SignUpActivity.this);
                     //check if the user exists already or not
+<<<<<<< HEAD
                     if(!db.checkUser(mail,psswd)){
 
                          db.addUser(user,mail,psswd,mobile,sports);
@@ -125,6 +134,11 @@ public class SignUpActivity extends AppCompatActivity {
                         }else{
                             Functions.createPopup(SignUpActivity.this,"une erreur si produit , ressayez plus tard.");
                         }
+=======
+                    if(db.checkUser(user,psswd) == false){
+                        db.addUser(user,mail,psswd,mobile,sports);
+                       Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
+>>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
 
                     }else{
                         // show an pop up --> account already exists ;
@@ -149,4 +163,9 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
 }
