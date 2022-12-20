@@ -3,16 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+<<<<<<< HEAD
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
+=======
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/background_finale">
+>>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView1"
-        tools:listitem="@layout/landinglist"
-        android:layout_marginTop="2dp">
+        tools:listitem="@layout/landinglist">
     </ListView>
 </RelativeLayout>
