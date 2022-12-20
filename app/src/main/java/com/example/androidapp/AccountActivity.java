@@ -71,21 +71,15 @@ public class AccountActivity extends AppCompatActivity {
         User user = db.getUserDetails(id);
 
         TextView userConnectedUserName;
-<<<<<<< HEAD:app/src/main/java/com/example/androidapp/AccountActivity.java
         userConnectedUserName = findViewById(R.id.UserName);
-       userConnectedUserName.setText( userConnectedUserName.getText().toString() +" "+ user.getUsername().toUpperCase(Locale.ROOT).toString());
+        String[] sports;
 
-        String[] sports = user.getSports().split("/");
-        displaySports(sports);
-=======
-        if(user != null){
+        if(user!= null){
             // display the name of user in top of our interface
-            userConnectedUserName = findViewById(R.id.UserName);
             userConnectedUserName.setText( userConnectedUserName.getText().toString() +" "+ user.getUsername().toUpperCase(Locale.ROOT).toString());
-            String[] sports = user.getSports().split("/");
+            sports = user.getSports().split("/");
             displaySports(sports);
         }
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e:app/src/main/java/com/example/androidapp/Account.java
 
 
 
@@ -98,7 +92,6 @@ public class AccountActivity extends AppCompatActivity {
                     saveImage();
                 } else {
                     askPermission();
-
                 }
 
             }

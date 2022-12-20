@@ -78,11 +78,8 @@ public class SignUpActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         if(intent != null){
             nameOfSport = intent.getStringExtra("nameOfSport");
-<<<<<<< HEAD
-
-=======
            // Toast.makeText(this," "+nameOfSport+" ",Toast.LENGTH_SHORT).show();
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
+
             switch(nameOfSport){
                 case "Natation":
                     natationChbx.setChecked(true);
@@ -98,53 +95,43 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    String user =  name.getEditText().getText().toString().trim();
-                    String mail =  email.getEditText().getText().toString().trim();
-                    String psswd =  password.getEditText().getText().toString().trim();
-                    String mobile =  phone.getEditText().getText().toString().trim();
+                try {
+                    String user = name.getEditText().getText().toString().trim();
+                    String mail = email.getEditText().getText().toString().trim();
+                    String psswd = password.getEditText().getText().toString().trim();
+                    String mobile = phone.getEditText().getText().toString().trim();
                     // getting the sports used
-                    String sports= "";
-                    if(tennisChbx.isChecked()){
+                    String sports = "";
+                    if (tennisChbx.isChecked()) {
                         sports = sports + "Tennis/";
                     }
-                    if(footballChbx.isChecked()){
+                    if (footballChbx.isChecked()) {
                         sports = sports + "Foot-ball/";
                     }
-                    if(natationChbx.isChecked()){
+                    if (natationChbx.isChecked()) {
                         sports = sports + "Natation/";
                     }
-                        SessionManagement sessionManagement = new SessionManagement(SignUpActivity.this);
+                    SessionManagement sessionManagement = new SessionManagement(SignUpActivity.this);
                     //check if the user exists already or not
-<<<<<<< HEAD
-                    if(!db.checkUser(mail,psswd)){
+                    if (!db.checkUser(mail, psswd)) {
 
-                         db.addUser(user,mail,psswd,mobile,sports);
+                        db.addUser(user, mail, psswd, mobile, sports);
 
                         // verify if the user is added to db && for assign the user id to the id attribut (in checkUser())
-                        if(db.checkUser(mail,psswd)){
-                            User userObjet = new User(db.getUserId(),mail);
+                        if (db.checkUser(mail, psswd)) {
+                            User userObjet = new User(db.getUserId(), mail);
                             sessionManagement.saveSession(userObjet);
 
-                            Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, "vous avez bien s'identifier", Toast.LENGTH_SHORT).show();
 
                             // go to account activity
                             Intent accountIntent = new Intent(SignUpActivity.this, AccountActivity.class);
                             startActivity(accountIntent);
-                        }else{
-                            Functions.createPopup(SignUpActivity.this,"une erreur si produit , ressayez plus tard.");
+                        } else {
+                            Functions.createPopup(SignUpActivity.this, "une erreur si produit , ressayez plus tard.");
                         }
-=======
-                    if(db.checkUser(user,psswd) == false){
-                        db.addUser(user,mail,psswd,mobile,sports);
-                       Toast.makeText(SignUpActivity.this,"vous avez bien s'identifier",Toast.LENGTH_SHORT).show();
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
 
-                    }else{
-                        // show an pop up --> account already exists ;
-                        Functions.createPopup(SignUpActivity.this,"Le compte existe déja");
                     }
-
                 }catch(SQLiteException e){
                     // show an pop up --> there is an exception  ;
                     Functions.createPopup(SignUpActivity.this,"une erreur si produit , merci de ressayer plus tard ");
@@ -163,9 +150,5 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
 }

@@ -1,10 +1,10 @@
 package com.example.androidapp;
 
-<<<<<<< HEAD
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-=======
+
 import androidx.annotation.NonNull;
 
 
@@ -13,20 +13,19 @@ import android.app.Activity;
 
 import android.content.Intent;
 
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-<<<<<<< HEAD
-import android.view.View;
-import android.widget.AdapterView;
-=======
 
 import android.view.View;
 import android.widget.AdapterView;
 
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
+
+import android.view.View;
+import android.widget.AdapterView;
+
 import android.widget.ListView;
 import android.widget.Toolbar;
 
@@ -38,26 +37,16 @@ import java.util.ArrayList;
 public class MainActivity extends Activity {
     ListView lv;
 
-<<<<<<< HEAD
     SessionManagement sessionManagement ;
 
-=======
 
-    SessionManagement sessionManagement;
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
   @Override
   protected void onStart(){
         super.onStart();
 
         // check if the user is logged in
-        // if the user is logged in move to Account_Activity
-
-<<<<<<< HEAD
-
+        // if the user is logged in move to AccountActivity
       sessionManagement = new SessionManagement(MainActivity.this);
-=======
-     sessionManagement = new SessionManagement(MainActivity.this);
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
 
 
         int userID = sessionManagement.getSession();
@@ -144,7 +133,6 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }*/
-<<<<<<< HEAD
 
 // traitment of the menu
 
@@ -171,7 +159,5 @@ public boolean onCreateOptionsMenu(Menu menu) {
         return super.onOptionsItemSelected(item);
     }
 
-=======
->>>>>>> c588e5b519b2f1a5a28c4b01758ae7cc3dff286e
 }
 
