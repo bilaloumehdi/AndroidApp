@@ -15,8 +15,6 @@ public class SessionManagement {
     }
 
     public  void saveSession(User user ){
-
-        // save the session of the user whenever user is logged in
         int id = user.getId();
         editor.putInt(SESSION_KEY,id).commit();
     }
@@ -27,7 +25,7 @@ public class SessionManagement {
     }
 
 
-    //remove the session --> put the session_key = -1
+
     public void removeSession(){
         editor.putInt(SESSION_KEY,-1).commit();
     }

@@ -45,7 +45,6 @@ public class MainActivity extends Activity {
         super.onStart();
 
         // check if the user is logged in
-        // if the user is logged in move to AccountActivity
       sessionManagement = new SessionManagement(MainActivity.this);
 
 
@@ -98,65 +97,14 @@ public class MainActivity extends Activity {
 
                 Intent in = new Intent(MainActivity.this, LoginActivity.class);
                 in.putExtra("name", name[position]);
-                //System.out.println(name[position] +" clicked");
                 startActivity(in);
 
 
-                // Toast.makeText(MainActivity.this,"---"+ listAdapter.getItem(position),Toast.LENGTH_SHORT).show();
 
 
             }
         });
 
-    }
-/*
-    // traitment of the menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater= getMenuInflater();
-        inflater.inflate(R.menu.authontification_options,menu);
-        Toast.makeText(this, "menu", Toast.LENGTH_SHORT).show();
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.loginOption:
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
-                return true ;
-            case R.id.signUp:
-                Intent it = new Intent(MainActivity.this, SignUpActivity.class);
-                startActivity(it);
-                return true ;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
-
-// traitment of the menu
-
-@Override
-public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater inflater= getMenuInflater();
-    inflater.inflate(R.menu.authentication_options,menu);
-    return true;
-}
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.loginOption:
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
-                return true ;
-
-            case R.id.signupOption:
-                Intent it = new Intent(MainActivity.this, SignUpActivity.class);
-                startActivity(it);
-                return true ;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 }
