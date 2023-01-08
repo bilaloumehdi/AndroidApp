@@ -21,17 +21,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private int _id ;
     private String username ;
 
-    // get the user id to use it in sessions
+
     public int getUserId(){
         return _id ;
     }
 
-    // to get the username & use it in the User Object creation ;
     public String getUsername() {
         return username;
     }
 
-// TODO: verify the DB table
 
 
 
@@ -66,7 +64,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     _id = cursor.getInt(cursor.getColumnIndex(COL_ID));
                     username = cursor.getString(cursor.getColumnIndex(COL_USERNAME));
 
-                    // closing cursor & db connection before returning
+
                     cursor.close();
                     db.close();
 

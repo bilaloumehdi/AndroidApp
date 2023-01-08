@@ -112,7 +112,10 @@ public class SignUpActivity extends AppCompatActivity {
                         sports = sports + "Natation/";
                     }
                     SessionManagement sessionManagement = new SessionManagement(SignUpActivity.this);
-                    //check if the user exists already or not
+                    if(user.equals("") || mail.equals("") || psswd.equals("") || mobile.equals("")){
+                        Functions.createPopup(SignUpActivity.this,"il faut remplir tous les champs");
+                    }
+
                     if (!db.checkUser(mail, psswd)) {
 
                         db.addUser(user, mail, psswd, mobile, sports);
